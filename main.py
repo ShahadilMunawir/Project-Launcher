@@ -29,10 +29,10 @@ class ProjectFinder(EventListener):
       return self._cached_projects
       
     try:
-      cmd = f"fd -H '^.git$' -t d -d 8 {folder} --exec dirname"
+      cmd = f"fd -H '^.git$' -t d -d 10 {folder} --exec dirname"
       self._cached_projects = subprocess.check_output(cmd, shell=True, text=True).splitlines()
     except subprocess.CalledProcessError:
-      cmd = f"find {folder} -maxdepth 8 -type d -name .git -prune -exec dirname {{}} \;"
+      cmd = f"find {folder} -maxdepth 10 -type d -name .git -prune -exec dirname {{}} \;"
       try:
         self._cached_projects = subprocess.check_output(cmd, shell=True, text=True).splitlines()
       except subprocess.CalledProcessError:
