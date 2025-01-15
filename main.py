@@ -20,7 +20,7 @@ class ProjectFinder(EventListener):
     self._last_results = []
     self._cached_projects = []
     self._last_cache_time = 0
-    self._cache_duration = 30  
+    self._cache_duration = 3  
 
   def _get_projects(self, folder):
     current_time = time.time()
